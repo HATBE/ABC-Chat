@@ -19,10 +19,10 @@ public class ClientManager {
     }
 
     public void waitForClients() {
-        System.out.println("Waiting for Clients.");
         while(true) {
+            System.out.println("Waiting for Clients.");
             try {
-                Socket clientConnection = this.app.getServerSocket().accept();
+                Socket clientConnection = this.app.getServer().getServerSocket().accept();
                 Client client = new Client(this.app, clientConnection);
                 this.addClient(client);
                 System.out.printf("Accepted new Client: %s as %s.\n", client.getIpAddress(), client.getUsername());

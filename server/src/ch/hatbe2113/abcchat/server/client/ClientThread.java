@@ -22,14 +22,13 @@ public class ClientThread implements Runnable {
 
     public void sendMessage(String message) {
         this.toClientWriter.println(message);
-        this.toClientWriter.flush();
     }
 
     @Override
     public void run() {
         try {
-            this.fromClientReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            this.toClientWriter = new PrintWriter(new OutputStreamWriter(connection.getOutputStream()));
+            this.fromClientReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+            this.toClientWriter = new PrintWriter(new OutputStreamWriter(connection.getOutputStream(), "UTF-8"), true);
 
             this.sendJoinMessage();
 
