@@ -1,6 +1,6 @@
 package ch.hatbe2113.abcchat.server;
 
-import ch.hatbe2113.abcchat.server.handler.ClientManager;
+import ch.hatbe2113.abcchat.server.client.ClientManager;
 
 import java.io.IOException;
 import java.net.ServerSocket;

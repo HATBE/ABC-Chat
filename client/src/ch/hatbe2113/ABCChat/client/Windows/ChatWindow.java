@@ -3,22 +3,36 @@ package ch.hatbe2113.ABCChat.client.Windows;
 import ch.hatbe2113.ABCChat.client.Application;
 
 import javax.swing.*;
+import java.io.*;
+import java.net.Socket;
 
 public class ChatWindow extends Window {
+    private String address;
+    private int port;
+    private Socket serverConnection;
+    private BufferedReader fromServerReader;
+    private PrintWriter toServerWriter;
+
     private Application app;
     private JPanel mainPanel;
     private JTextField messageField;
     private JButton sendButton;
     private JTextArea chatArea;
     private JTextPane infoText;
+    private JScrollPane chatScroll;
 
     public ChatWindow(Application app) {
         super();
 
         this.app = app;
 
+        this.address = "localhost";
+        this.port = 1111;
+
         initFrame();
         listeners();
+
+        this.receiveMessages();
     }
 
     private void initFrame() {
@@ -35,17 +49,18 @@ public class ChatWindow extends Window {
     }
 
     private void listeners() {
-        sendButton.addActionListener(e -> addMessageToChatArea());
-        messageField.addActionListener(e -> addMessageToChatArea());
+        sendButton.addActionListener(e -> sendMessage());
+        messageField.addActionListener(e -> sendMessage());
     }
 
-    private void addMessageToChatArea() {
-        String message = messageField.getText();
-        if(message.isEmpty()) {
-            return;
+    private void sendMessage() {
+        String message = this.messageField.getText();
+
+        if(!message.isEmpty()) {
+            this.toServerWriter.println(message);
+            this.toServerWriter.flush();
+            this.messageField.setText("");
         }
-        chatArea.append(message + "\n");
-        messageField.setText("");
     }
 
     private void renderChatInfo() {
@@ -68,5 +83,41 @@ public class ChatWindow extends Window {
 
     public void kill() {
         this.frame.dispose();
+    }
+
+    private void receiveMessages() {
+        try {
+            this.serverConnection = new Socket(this.address, this.port);
+
+            this.fromServerReader = new BufferedReader(new InputStreamReader(serverConnection.getInputStream()));
+            this.toServerWriter = new PrintWriter(new OutputStreamWriter(serverConnection.getOutputStream()));
+
+            while(true) {
+                String message = fromServerReader.readLine();
+                chatArea.append(message + "\n");
+                chatScroll.getVerticalScrollBar().setValue(chatScroll.getVerticalScrollBar().getMaximum());
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, String.format("Connection failed: %s", address));
+            e.printStackTrace();
+        } finally {
+            if(serverConnection != null) {
+                try {
+                    serverConnection.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if(fromServerReader != null) {
+                try {
+                    fromServerReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            toServerWriter.close();
+        }
     }
 }

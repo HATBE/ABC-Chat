@@ -1,4 +1,4 @@
-package ch.hatbe2113.abcchat.server.handler;
+package ch.hatbe2113.abcchat.server.client;
 
 import ch.hatbe2113.abcchat.server.Application;
 

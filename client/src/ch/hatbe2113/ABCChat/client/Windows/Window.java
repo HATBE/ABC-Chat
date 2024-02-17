@@ -10,6 +10,12 @@ public abstract class Window {
         this.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.frame.setResizable(false);
         this.frame.setLocationRelativeTo(null);
+
+        java.net.URL imageUrl = getClass().getResource("/ressources/images/icon.png");
+        if(imageUrl != null) {
+            ImageIcon icon = new ImageIcon(imageUrl);
+            this.frame.setIconImage(icon.getImage());
+        }
     }
 
     public abstract void show();
