@@ -36,12 +36,15 @@ public class ChatWindow extends Window {
 
     private void listeners() {
         sendButton.addActionListener(e -> addMessageToChatArea());
-
         messageField.addActionListener(e -> addMessageToChatArea());
     }
 
     private void addMessageToChatArea() {
-        chatArea.append(messageField.getText() + "\n");
+        String message = messageField.getText();
+        if(message.isEmpty()) {
+            return;
+        }
+        chatArea.append(message + "\n");
         messageField.setText("");
     }
 

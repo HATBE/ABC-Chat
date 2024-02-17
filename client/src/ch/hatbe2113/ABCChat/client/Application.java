@@ -9,7 +9,8 @@ public class Application {
     public Application() {
         this.windowManager = new WindowManager(this);
 
-        windowManager.switchWindow(WindowNames.LOGIN);
+        // TODO: windowManager.switchWindow(WindowNames.LOGIN);
+        windowManager.switchWindow(WindowNames.CHAT);
     }
 
     public WindowManager getWindowManager() {
