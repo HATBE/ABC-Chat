@@ -1,4 +1,4 @@
-package ch.hatbe2113.ABCChat.Windows;
+package ch.hatbe2113.ABCChat.client.Windows;
 
 import javax.swing.*;
 

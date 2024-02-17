@@ -1,6 +1,6 @@
-package ch.hatbe2113.ABCChat.Windows;
+package ch.hatbe2113.ABCChat.client.Windows;
 
-import ch.hatbe2113.ABCChat.Application;
+import ch.hatbe2113.ABCChat.client.Application;
 
 import javax.swing.*;
 
@@ -27,9 +27,7 @@ public class ChatWindow extends Window {
 
         this.frame.setContentPane(mainPanel);
 
-        this.infoText.setText("Hello\nnewline");
-        this.infoText.setFocusable(false);
-        this.infoText.setEditable(false);
+        renderChatInfo();
 
         this.messageField.requestFocus();
 
@@ -45,6 +43,16 @@ public class ChatWindow extends Window {
     private void addMessageToChatArea() {
         chatArea.append(messageField.getText() + "\n");
         messageField.setText("");
+    }
+
+    private void renderChatInfo() {
+        String chatInfo = String.format("Chat: %s\n", "Chat1");
+        chatInfo += String.format("Username: %s", "Hanspeter");
+
+        this.infoText.setText(chatInfo);
+
+        this.infoText.setFocusable(false);
+        this.infoText.setEditable(false);
     }
 
     public void show() {

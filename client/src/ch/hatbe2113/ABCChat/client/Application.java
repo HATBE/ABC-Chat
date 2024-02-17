@@ -1,10 +1,11 @@
-package ch.hatbe2113.ABCChat;
+package ch.hatbe2113.ABCChat.client;
 
-import ch.hatbe2113.ABCChat.Windows.WindowManager;
-import ch.hatbe2113.ABCChat.Windows.WindowNames;
+import ch.hatbe2113.ABCChat.client.Windows.WindowManager;
+import ch.hatbe2113.ABCChat.client.Windows.WindowNames;
 
 public class Application {
     private WindowManager windowManager;
+
     public Application() {
         this.windowManager = new WindowManager(this);
 
