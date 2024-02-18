@@ -4,6 +4,7 @@ import ch.hatbe2113.abcchat.server.Application;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class ClientThread implements Runnable {
     private Application app;
@@ -27,8 +28,8 @@ public class ClientThread implements Runnable {
     @Override
     public void run() {
         try {
-            this.fromClientReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-            this.toClientWriter = new PrintWriter(new OutputStreamWriter(connection.getOutputStream(), "UTF-8"), true);
+            this.fromClientReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+            this.toClientWriter = new PrintWriter(new OutputStreamWriter(connection.getOutputStream(), StandardCharsets.UTF_8), true);
 
             this.sendJoinMessage();
 

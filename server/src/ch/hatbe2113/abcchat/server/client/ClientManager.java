@@ -9,7 +9,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ClientManager {
     Application app;
-
     List<Client> clients;
 
     public ClientManager(Application app) {
@@ -19,7 +18,7 @@ public class ClientManager {
     }
 
     public void waitForClients() {
-        while(true) {
+        while(!this.app.getServer().getServerSocket().isClosed()) {
             System.out.println("Waiting for Clients.");
             try {
                 Socket clientConnection = this.app.getServer().getServerSocket().accept();

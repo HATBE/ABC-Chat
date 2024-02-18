@@ -3,6 +3,7 @@ package ch.hatbe2113.ABCChat.client.Windows;
 import ch.hatbe2113.ABCChat.client.Application;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.net.Socket;
 
@@ -43,6 +44,10 @@ public class ChatWindow extends Window {
 
         renderChatInfo();
 
+        this.messageField.setBackground(Color.WHITE);
+        this.messageField.setBorder(BorderFactory.createCompoundBorder(
+                this.messageField.getBorder(),
+                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         this.messageField.requestFocus();
 
         this.show();
