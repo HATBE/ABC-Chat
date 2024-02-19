@@ -7,14 +7,13 @@ import java.net.Socket;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class ClientManager {
+public class NetworkClientManager {
     Application app;
-    List<Client> clients;
+    List<NetworkClient> clients;
 
-    public ClientManager(Application app) {
+    public NetworkClientManager(Application app) {
         this.app = app;
-
-        this.clients = new CopyOnWriteArrayList<Client>();
+        this.clients = new CopyOnWriteArrayList<NetworkClient>();
     }
 
     public void waitForClients() {
@@ -22,30 +21,30 @@ public class ClientManager {
             System.out.println("Waiting for Clients.");
             try {
                 Socket clientConnection = this.app.getServer().getServerSocket().accept();
-                Client client = new Client(this.app, clientConnection);
+                NetworkClient client = new NetworkClient(this.app, clientConnection);
                 this.addClient(client);
-                System.out.printf("Accepted new Client: %s as %s.\n", client.getIpAddress(), client.getUsername());
+                System.out.printf("Accepted new Client: %s.\n", client.getIpAddress());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void broadcastMessage(String message) {
-        for(Client client : this.clients) {
-            client.sendMessage(message);
+    public void broadcastString(String string) {
+        for(NetworkClient client : this.clients) {
+            client.sendString(string);
         }
     }
 
-    public void addClient(Client client) {
+    public void addClient(NetworkClient client) {
         this.clients.add(client);
     }
 
-    public void removeClient(Client client) {
+    public void removeClient(NetworkClient client) {
         this.clients.remove(client);
     }
 
-    public List<Client> getClients() {
+    public List<NetworkClient> getClients() {
         return this.clients;
     }
 }

@@ -6,37 +6,37 @@ import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
-public class ClientThread implements Runnable {
+public class NetworkClientThread implements Runnable {
     private Application app;
-    private Socket connection;
-    private Client client;
+    private Socket connectionToClient;
+    private NetworkClient client;
     private BufferedReader fromClientReader;
     private PrintWriter toClientWriter;
 
-    public ClientThread(Application app, Client client, Socket connection) {
+    public NetworkClientThread(Application app, NetworkClient client, Socket connection) {
         this.app = app;
         this.client = client;
-        this.connection = connection;
+        this.connectionToClient = connection;
 
         new Thread(this).start(); // Start new Client Thread
     }
 
-    public void sendMessage(String message) {
+    public void sendString(String message) {
         this.toClientWriter.println(message);
     }
 
     @Override
     public void run() {
         try {
-            this.fromClientReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
-            this.toClientWriter = new PrintWriter(new OutputStreamWriter(connection.getOutputStream(), StandardCharsets.UTF_8), true);
+            this.fromClientReader = new BufferedReader(new InputStreamReader(connectionToClient.getInputStream(), StandardCharsets.UTF_8));
+            this.toClientWriter = new PrintWriter(new OutputStreamWriter(connectionToClient.getOutputStream(), StandardCharsets.UTF_8), true);
 
             this.sendJoinMessage();
 
             String message = fromClientReader.readLine();
             while(message != null) {
                 System.out.println(message);
-                this.app.getClientManager().broadcastMessage(String.format("%s: %s", this.client.getIpAddress(), message));
+                this.app.getClientManager().broadcastString(String.format("%s: %s", this.client.getIpAddress(), message));
                 message = fromClientReader.readLine();
             }
         } catch (IOException e) {
@@ -60,12 +60,12 @@ public class ClientThread implements Runnable {
     }
 
     private void sendJoinMessage() {
-        this.app.getClientManager().broadcastMessage(client.getIpAddress() + " joined the Chat.");
-        this.client.sendMessage("Welcome to Chat1");
+        this.app.getClientManager().broadcastString(client.getIpAddress() + " joined the Chat.");
+        this.client.sendString("Welcome to Chat1");
     }
 
     private void sendDisconnectMessage() {
         System.out.printf("%s disconnected\n", this.client.getIpAddress());
-        this.app.getClientManager().broadcastMessage(client.getIpAddress() + " left the Chat.");
+        this.app.getClientManager().broadcastString(client.getIpAddress() + " left the Chat.");
     }
 }

@@ -1,12 +1,12 @@
 package ch.hatbe2113.abcchat.server;
 
-import ch.hatbe2113.abcchat.server.client.ClientManager;
+import ch.hatbe2113.abcchat.server.client.NetworkClientManager;
 import ch.hatbe2113.abcchat.server.server.Server;
 
 
 public class Application {
     private Server server;
-    private ClientManager clientManager;
+    private NetworkClientManager clientManager;
 
     public Application() {
         this.server = new Server(1111);
@@ -15,7 +15,7 @@ public class Application {
             return;
         }
 
-        this.clientManager = new ClientManager(this);
+        this.clientManager = new NetworkClientManager(this);
         this.clientManager.waitForClients();
 
         this.server.stopServer();
@@ -25,7 +25,7 @@ public class Application {
         return server;
     }
 
-    public ClientManager getClientManager() {
+    public NetworkClientManager getClientManager() {
         return clientManager;
     }
 }
