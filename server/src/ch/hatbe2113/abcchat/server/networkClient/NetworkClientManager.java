@@ -1,4 +1,4 @@
-package ch.hatbe2113.abcchat.server.client;
+package ch.hatbe2113.abcchat.server.networkClient;
 
 import ch.hatbe2113.abcchat.server.Application;
 
@@ -18,21 +18,15 @@ public class NetworkClientManager {
 
     public void waitForClients() {
         while(!this.app.getServer().getServerSocket().isClosed()) {
-            System.out.println("Waiting for Clients.");
+            System.out.println("Waiting for clients...");
             try {
                 Socket clientConnection = this.app.getServer().getServerSocket().accept();
                 NetworkClient client = new NetworkClient(this.app, clientConnection);
                 this.addClient(client);
-                System.out.printf("Accepted new Client: %s.\n", client.getIpAddress());
+                System.out.printf("Accepted new client: %s.\n", client.getIpAddress());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    public void broadcastString(String string) {
-        for(NetworkClient client : this.clients) {
-            client.sendString(string);
         }
     }
 
