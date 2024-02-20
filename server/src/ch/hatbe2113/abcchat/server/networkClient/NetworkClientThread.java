@@ -39,8 +39,6 @@ public class NetworkClientThread implements Runnable {
             this.client.sendString("CONN|ACK"); // acknowledge the connection to the client
 
             while(!this.app.getServer().getServerSocket().isClosed() && !this.connectionToClient.isClosed()) {
-                System.out.println("thread: " + Thread.currentThread().getId());
-                System.out.println(this.app.getClientManager().getClients().size());
                 String data = fromClientReader.readLine();
 
                 if(data == null) {
@@ -57,7 +55,6 @@ public class NetworkClientThread implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            System.out.println(this.app.getClientManager().getClients().size());
             this.disconnect();
         }
     }

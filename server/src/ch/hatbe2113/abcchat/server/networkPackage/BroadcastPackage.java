@@ -1,13 +1,14 @@
 package ch.hatbe2113.abcchat.server.networkPackage;
 
 import ch.hatbe2113.abcchat.server.Application;
+import ch.hatbe2113.abcchat.server.messages.BroadcastMessage;
 import ch.hatbe2113.abcchat.server.networkClient.NetworkClient;
 
 import java.util.Date;
 
-public class MessagePackage extends NetworkPackage {
-    // TODO: allow for longer data stuff, because you can add space at the end. does this even make sense? because no, it splits after a pipe, delete this todo, you fucking idiot
-    public MessagePackage(Application app, NetworkClient client, String[] data) {
+public class BroadcastPackage extends NetworkPackage {
+    // TODO: rename client to sender
+    public BroadcastPackage(Application app, NetworkClient client, String[] data) {
         super(app, client, data);
     }
 
@@ -25,7 +26,9 @@ public class MessagePackage extends NetworkPackage {
         Date date = new Date(2023 - 1900, 1, 15, 0, 0, 0);
         long timestamp = date.getTime() / 1000L;
 
-        this.client.sendString("MESSAGE|ACK");
-        this.app.getMessageHandler().broadcastString(String.format("BROADCAST|%s|%s", timestamp, data[0]));
+        BroadcastMessage broadcastMessage = new BroadcastMessage(this.client.getUser().getUsername(), data[0]);
+
+        this.client.sendString(broadcastMessage.ack());
+        this.app.getMessageHandler().broadcastString(broadcastMessage.serialize());
     }
 }

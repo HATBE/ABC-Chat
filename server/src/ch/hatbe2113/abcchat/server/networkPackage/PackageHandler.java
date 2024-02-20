@@ -3,8 +3,6 @@ package ch.hatbe2113.abcchat.server.networkPackage;
 import ch.hatbe2113.abcchat.server.Application;
 import ch.hatbe2113.abcchat.server.networkClient.NetworkClient;
 
-import java.util.Arrays;
-
 public class PackageHandler {
     Application app;
     NetworkClient client;
@@ -32,8 +30,8 @@ public class PackageHandler {
             case "DISCONNECT" -> {
                 new DisconnectPackage(this.app, this.client, newDataSplit).handle();
             }
-            case "MESSAGE" -> {
-                new MessagePackage(this.app, this.client, newDataSplit).handle();
+            case "BROADCAST" -> {
+                new BroadcastPackage(this.app, this.client, newDataSplit).handle();
             }
             default -> this.client.getClientThread().getToClientWriter().println("ERR|unknown package");
         }

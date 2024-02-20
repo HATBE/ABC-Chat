@@ -1,6 +1,8 @@
 package ch.hatbe2113.abcchat.server.networkPackage;
 
 import ch.hatbe2113.abcchat.server.Application;
+import ch.hatbe2113.abcchat.server.messages.DisconnectInfoMessage;
+import ch.hatbe2113.abcchat.server.messages.JoinInfoMessage;
 import ch.hatbe2113.abcchat.server.networkClient.NetworkClient;
 
 public class DisconnectPackage extends NetworkPackage {
@@ -19,8 +21,10 @@ public class DisconnectPackage extends NetworkPackage {
             return;
         }
 
-        this.client.sendString("DISCONNECT|ACK");
-        this.app.getMessageHandler().broadcastString(String.format("BROADCAST|%s has left the chat", "hanspeter"));
+        DisconnectInfoMessage disconnectInfo = new DisconnectInfoMessage(this.client.getUser().getUsername());
+
+        this.client.sendString(disconnectInfo.ack());
+        this.app.getMessageHandler().broadcastString(disconnectInfo.serialize());
 
         this.client.disconnect();
     }

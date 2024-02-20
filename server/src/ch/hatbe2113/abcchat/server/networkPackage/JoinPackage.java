@@ -1,6 +1,7 @@
 package ch.hatbe2113.abcchat.server.networkPackage;
 
 import ch.hatbe2113.abcchat.server.Application;
+import ch.hatbe2113.abcchat.server.messages.JoinInfoMessage;
 import ch.hatbe2113.abcchat.server.networkClient.NetworkClient;
 
 public class JoinPackage extends NetworkPackage {
@@ -23,7 +24,11 @@ public class JoinPackage extends NetworkPackage {
         String username = this.data[0];
         this.client.createUser(username);
 
-        this.client.sendString("JOIN|ACK");
-        this.app.getMessageHandler().broadcastString(String.format("BROADCAST|%s has joined the chat", this.client.getUser().getUsername()));
+        // TODO: check if username already exists on server
+
+        JoinInfoMessage joinInfo = new JoinInfoMessage(username);
+
+        this.client.sendString(joinInfo.ack());
+        this.app.getMessageHandler().broadcastString(joinInfo.serialize());
     }
 }
