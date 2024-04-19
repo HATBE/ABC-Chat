@@ -25,6 +25,6 @@ public class DisconnectInfoMessage extends Message {
 
     @Override
     public String serialize() {
-        return String.format(this.name + this.spacer + this.time + this.spacer + this.username);
+        return String.format(this.name + this.separator + this.time + this.separator + this.username);
     }
 }

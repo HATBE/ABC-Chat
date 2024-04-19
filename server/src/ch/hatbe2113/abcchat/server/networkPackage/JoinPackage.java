@@ -22,9 +22,13 @@ public class JoinPackage extends NetworkPackage {
         }
 
         String username = this.data[0];
-        this.client.createUser(username);
 
-        // TODO: check if username already exists on server
+        if(this.app.getClientManager().usernameExists(username)) {
+            this.client.sendString("ERR|Username already taken");
+            return;
+        }
+
+        this.client.createUser(username);
 
         JoinInfoMessage joinInfo = new JoinInfoMessage(username);
 

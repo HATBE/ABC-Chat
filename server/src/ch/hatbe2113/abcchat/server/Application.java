@@ -6,6 +6,10 @@ import ch.hatbe2113.abcchat.server.server.Server;
 
 
 public class Application {
+    /*
+    * TODO:
+    * regex check of messages and username .. dont allow pipe, because it is a separator
+    * */
     private Server server;
     private NetworkClientManager clientManager;
     private MessageHandler messageHandler;

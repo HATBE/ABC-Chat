@@ -41,4 +41,16 @@ public class NetworkClientManager {
     public List<NetworkClient> getClients() {
         return this.clients;
     }
+
+    public boolean usernameExists(String username) {
+        for(NetworkClient client : this.getClients()) {
+            if(client.getUser() == null) { // filter all not loggedin clients
+                continue;
+            }
+            if(client.getUser().getUsername().equalsIgnoreCase(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

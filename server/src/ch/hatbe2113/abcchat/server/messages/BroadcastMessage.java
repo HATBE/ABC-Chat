@@ -31,6 +31,6 @@ public class BroadcastMessage extends Message {
 
     @Override
     public String serialize() {
-        return String.format(this.name + this.spacer + this.time + this.spacer + this.username + this.spacer + this.message);
+        return String.format(this.name + this.separator + this.time + this.separator + this.username + this.separator + this.message);
     }
 }
