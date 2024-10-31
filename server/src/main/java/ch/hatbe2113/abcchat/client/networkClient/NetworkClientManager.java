@@ -1,4 +1,4 @@
-package ch.hatbe2113.abcchat.networkClient;
+package ch.hatbe2113.abcchat.client.networkClient;
 
 import ch.hatbe2113.abcchat.logger.LogManager;
 import ch.hatbe2113.abcchat.server.Server;
@@ -22,11 +22,10 @@ public class NetworkClientManager {
             LogManager.getLogger().info("Waiting for new client.");
 
             try {
-                // TODO:
                 Socket clientConnection = this.server.getServerSocket().accept();
                 NetworkClient client = new NetworkClient(clientConnection);
                 this.addClient(client);
-                LogManager.getLogger().info("Accepted new client {}.", "IPTODO:");
+                LogManager.getLogger().info("Accepted new client {}: ({}).", client.getIpAddress(), this.clientsCount());
             } catch(IOException e) {
                 LogManager.getLogger().error("Something went wrong while client was connecting.", e);
             }
@@ -43,5 +42,9 @@ public class NetworkClientManager {
 
     public List<NetworkClient> getClients() {
         return this.clients;
+    }
+
+    public int clientsCount() {
+        return this.clients.size();
     }
 }

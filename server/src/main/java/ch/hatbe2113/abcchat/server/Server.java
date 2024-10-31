@@ -1,7 +1,7 @@
 package ch.hatbe2113.abcchat.server;
 
 import ch.hatbe2113.abcchat.logger.LogManager;
-import ch.hatbe2113.abcchat.networkClient.NetworkClientManager;
+import ch.hatbe2113.abcchat.client.networkClient.NetworkClientManager;
 
 import java.io.IOException;
 import java.net.ServerSocket;
