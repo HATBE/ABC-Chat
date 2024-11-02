@@ -8,11 +8,16 @@ public class App {
 
     public App() {
         this.server = new Server(1111);
+        //new ConsoleServer(this.server);
 
         this.server.start();
 
         this.server.waitForClients();
 
+        this.stop();
+    }
+
+    public void stop() {
         this.server.stop();
     }
 }

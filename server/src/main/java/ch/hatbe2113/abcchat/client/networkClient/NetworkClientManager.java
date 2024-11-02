@@ -18,7 +18,7 @@ public class NetworkClientManager {
     }
 
     public void waitForClients() {
-        while (!this.server.getServerSocket().isClosed()) {
+        while (this.server.isRunning()) {
             LogManager.getLogger().info("Waiting for new client.");
 
             try {
