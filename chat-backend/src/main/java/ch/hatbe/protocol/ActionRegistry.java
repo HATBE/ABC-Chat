@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ActionRegistry {
     private static ActionRegistry INSTANCE;
 
-    private Map<String, Action> actions = new ConcurrentHashMap<>();
+    private final Map<String, Action> actions = new ConcurrentHashMap<>();
 
     private ActionRegistry() {}
 

@@ -1,10 +1,6 @@
 package ch.hatbe.protocol;
 
-import ch.hatbe.protocol.actions.Action;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ActionService {
     private final ObjectMapper mapper = new ObjectMapper();

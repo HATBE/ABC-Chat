@@ -23,7 +23,7 @@ public class ClientService {
 
             try {
                 Socket clientConnection = this.server.getServerSocket().accept();
-                this.setupNewClient(clientConnection);
+                //this.setupNewClient(clientConnection);
                 log.info("Accepted new client with ip: {}. Current client count: {}", clientConnection.getInetAddress(), this.getClientsCount());
             } catch(IOException e) {
                 log.warn("Something went wrong while the client was connecting!", e);
@@ -35,14 +35,14 @@ public class ClientService {
         return this.clients.size();
     }
 
-    private void setupNewClient(Socket connectionToClient) {
+    /*private void setupNewClient(Socket connectionToClient) {
         ClientSession clientSession = new ClientSession(connectionToClient, this);
 
         this.clients.add(clientSession);
 
         Thread thread = new Thread(clientSession);
         thread.start();
-    }
+    }*/
 
     public void disconnectClient(ClientSession client) {
         //client.disconnect(); // TODO make disconnect without delete from list

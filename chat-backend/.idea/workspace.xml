@@ -4,14 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b53a7b5c-5e8f-4bcf-bd37-97ce0a7ba824" name="Changes" comment="" />
+    <list default="true" id="7f53049e-7532-4d44-842c-044397c81722" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/cli/CliArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/LoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/LoginAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/packages/PackageService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/packages/entities/messages/LoginStateMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/packages/entities/messages/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/packages/entities/requests/LoginRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/server/TcpServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/server/client/ClientService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/server/client/ClientSession.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/server/client/ClientState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/server/client/entities/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/user/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/user/UserService.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="24" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -39,30 +61,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;newv&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;E:/nc/private/Webapps/ABC-Chat/chat-backend/src/main/java/ch/hatbe/Main.java&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "E:/nc/private/Webapps/ABC-Chat/chat-backend/src/main/java/ch/hatbe/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="ch.hatbe.packages" />
@@ -72,6 +98,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.hatbe.Main" />
       <module name="abChatBackend" />
+      <option name="PROGRAM_PARAMETERS" value="-port 12345" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch.hatbe.*" />
@@ -90,7 +117,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b53a7b5c-5e8f-4bcf-bd37-97ce0a7ba824" name="Changes" comment="" />
+      <changelist id="7f53049e-7532-4d44-842c-044397c81722" name="Changes" comment="" />
       <created>1777470642495</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -98,6 +125,7 @@
       <workItem from="1777470643648" duration="14713000" />
       <workItem from="1777621949065" duration="314000" />
       <workItem from="1777727330921" duration="1746000" />
+      <workItem from="1777731675772" duration="2343000" />
     </task>
     <servers />
   </component>
