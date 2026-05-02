@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f53049e-7532-4d44-842c-044397c81722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/DisconnectAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/AckResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/Actions" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/LoginAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/WhoAmIAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/LoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/WhoAmIResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/LoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/LoginAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/WelcomeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/WelcomeResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/LoginAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/user/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +80,9 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="ch.hatbe.packages" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ch.hatbe.protocol.responses" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -116,7 +115,7 @@
       <workItem from="1777470643648" duration="14713000" />
       <workItem from="1777621949065" duration="314000" />
       <workItem from="1777727330921" duration="1746000" />
-      <workItem from="1777731675772" duration="5878000" />
+      <workItem from="1777731675772" duration="7235000" />
     </task>
     <servers />
   </component>
