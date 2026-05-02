@@ -1,31 +1,47 @@
 package ch.hatbe.protocol;
 
+import ch.hatbe.protocol.actions.Action;
+import ch.hatbe.protocol.responses.ErrorResponse;
+import ch.hatbe.server.client.ClientSession;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class ActionService {
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper;
+    private final ClientSession session;
 
+    public ActionService(ClientSession session) {
+        this.mapper = new ObjectMapper();
+        this.session = session;
+    }
 
-
-
-    /*public void route(String json, ClientSession session) {
+    public void route(String json) {
         try {
             JsonNode node = mapper.readTree(json);
 
-            String type = node.get("type").asText();
-
-
-
-            if (null == null) {
-                session.send("{\"error\":\"Unknown typü\"}"); // TODO: SEND ERROR PACKAGE
+            JsonNode typeNode = node.get("type");
+            if (typeNode == null || !typeNode.isTextual()) {
+                session.send(new ErrorResponse("Missing or invalid action type").toJson());
                 return;
             }
 
-            Object packet = mapper.treeToValue(node, type));
+            String type = typeNode.asText();
 
-            //handler.handle(packet, session);
-        } catch (Exception e) {
-            session.send("{\"error\":\"Invalid package\"}"); // TODO: SEND ERROR PACKAGE
+            var actionClass = ActionRegistry.getInstance().getAction(type);
+
+            if (actionClass == null) {
+                session.send(new ErrorResponse("Action does not exist!").toJson());
+                return;
+            }
+
+            Action action = mapper.treeToValue(node, actionClass);
+
+            action.handle(this.session);
+        } catch (JsonProcessingException e) {
+            session.send(new ErrorResponse("Action does not exist!").toJson());
         }
-    }*/
+    }
 }

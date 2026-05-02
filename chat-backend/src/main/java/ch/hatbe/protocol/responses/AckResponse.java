@@ -1,12 +1,12 @@
 package ch.hatbe.protocol.responses;
 
-public class WelcomeResponse extends Response {
-    public WelcomeResponse() {
+public class AckResponse extends Response {
+    public AckResponse() {
         super(true);
     }
 
     @Override
     public String getType() {
-        return "WELCOME";
+        return "ACKNOWLEDGE";
     }
 }

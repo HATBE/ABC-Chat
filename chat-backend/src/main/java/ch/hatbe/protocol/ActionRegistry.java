@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ActionRegistry {
     private static ActionRegistry INSTANCE;
 
-    private final Map<String, Action> actions = new ConcurrentHashMap<>();
+    private final Map<String, Class<? extends Action>> actions = new ConcurrentHashMap<>();
 
     private ActionRegistry() {}
 
@@ -19,11 +19,11 @@ public class ActionRegistry {
         return ActionRegistry.INSTANCE;
     }
 
-    public void registerAction(String name, Action action) {
+    public void registerAction(String name, Class<? extends Action> action) {
         this.actions.put(name.strip().toUpperCase(), action);
     }
 
-    public Action getAction(String name) {
+    public Class<? extends Action> getAction(String name) {
         return this.actions.get(name);
     }
 }

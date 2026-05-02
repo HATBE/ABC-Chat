@@ -1,6 +1,7 @@
 package ch.hatbe.server.client;
 
 import ch.hatbe.protocol.ActionService;
+import ch.hatbe.protocol.responses.WelcomeResponse;
 import ch.hatbe.server.client.entities.Client;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 @Slf4j
 public class ClientSession implements Runnable {
     private final ClientService clientService;
-    private final ActionService packageService;
+    private final ActionService actionService;
 
     private BufferedReader reader;
     private PrintWriter writer;
@@ -22,10 +23,10 @@ public class ClientSession implements Runnable {
     @Getter
     private final Client client;
 
-    public ClientSession(Socket connection, ClientService clientService, ActionService packageService) {
+    public ClientSession(Socket connection, ClientService clientService) {
         this.client = new Client(connection);
         this.clientService = clientService;
-        this.packageService = packageService;
+        this.actionService = new ActionService(this);
     }
 
     @Override
@@ -34,12 +35,12 @@ public class ClientSession implements Runnable {
             this.reader = new BufferedReader(new InputStreamReader(this.getClient().getConnection().getInputStream(), StandardCharsets.UTF_8));
             this.writer = new PrintWriter(new OutputStreamWriter(this.getClient().getConnection().getOutputStream(), StandardCharsets.UTF_8), true);
 
-            this.send("Welcome to the chat!"); // TODO: send welcome package
+            this.send(new WelcomeResponse().toJson());
 
             String message;
 
             while (this.isRunning && (message = this.reader.readLine()) != null) {
-                // TODO: handler
+                this.actionService.route(message);
             }
         } catch (IOException e) {
             log.warn("Client connection lost.", e);

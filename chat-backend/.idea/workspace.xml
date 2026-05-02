@@ -5,28 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f53049e-7532-4d44-842c-044397c81722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/cli/CliArguments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/DisconnectAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/AckResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/ErrorResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionRegistry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/Action.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/LoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/LoginAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/WelcomeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/WelcomeResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/packages/PackageService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/packages/entities/messages/LoginStateMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/packages/entities/messages/Message.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/packages/entities/requests/LoginRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/server/TcpServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/server/client/ClientService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/server/client/ClientSession.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/server/client/ClientState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/server/client/entities/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/user/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ch/hatbe/user/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
+    "Application.Main.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -125,7 +116,7 @@
       <workItem from="1777470643648" duration="14713000" />
       <workItem from="1777621949065" duration="314000" />
       <workItem from="1777727330921" duration="1746000" />
-      <workItem from="1777731675772" duration="2343000" />
+      <workItem from="1777731675772" duration="5878000" />
     </task>
     <servers />
   </component>

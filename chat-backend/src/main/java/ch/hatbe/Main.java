@@ -2,6 +2,7 @@ package ch.hatbe;
 
 import ch.hatbe.cli.CliArguments;
 import ch.hatbe.protocol.ActionRegistry;
+import ch.hatbe.protocol.actions.DisconnectAction;
 import ch.hatbe.protocol.actions.LoginAction;
 import ch.hatbe.server.TcpServer;
 
@@ -27,7 +28,8 @@ public class Main {
 
     private static void registerActions() {
         var ar = ActionRegistry.getInstance();
-
-        ar.registerAction("LOGIN", new LoginAction());
+$
+        ar.registerAction("DISCONNECT", DisconnectAction.class);
+        ar.registerAction("LOGIN", LoginAction.class);
     }
 }
