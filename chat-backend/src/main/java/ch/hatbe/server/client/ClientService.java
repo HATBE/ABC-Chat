@@ -1,6 +1,7 @@
 package ch.hatbe.server.client;
 
-import ch.hatbe.server.TcpServer;
+import ch.hatbe.protocol.responses.Response;
+import ch.hatbe.server.ChatServer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -11,9 +12,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Slf4j
 public class ClientService {
     private final List<ClientSession> clients = new CopyOnWriteArrayList<>();
-    private final TcpServer server;
+    private final ChatServer server;
 
-    public ClientService(TcpServer server) {
+    public ClientService(ChatServer server) {
         this.server = server;
     }
 
@@ -44,9 +45,8 @@ public class ClientService {
         thread.start();
     }
 
-    public void disconnectClient(ClientSession client) {
-        //client.disconnect(); // TODO make disconnect without delete from list
-        this.clients.remove(client);
+    public void removeClient(ClientSession session) {
+        this.clients.remove(session);
         log.info("Client removed. Current client count: {}", this.getClientsCount());
     }
 
@@ -57,9 +57,9 @@ public class ClientService {
         this.clients.clear();
     }
 
-    public void broadcast(String msg) { // TODO: send packages
+    public void broadcast(Response msg) {
         for (ClientSession client : this.clients) {
-            client.send(msg);
+            client.send(msg.toJson());
         }
     }
 }

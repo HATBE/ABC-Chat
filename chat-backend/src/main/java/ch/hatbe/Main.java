@@ -5,7 +5,10 @@ import ch.hatbe.protocol.ActionRegistry;
 import ch.hatbe.protocol.actions.DisconnectAction;
 import ch.hatbe.protocol.actions.auth.LoginAction;
 import ch.hatbe.protocol.actions.auth.WhoAmIAction;
-import ch.hatbe.server.TcpServer;
+import ch.hatbe.server.ChatServer;
+import ch.hatbe.server.ServerTerminal;
+
+import java.util.Scanner;
 
 public class Main {
     static void main(String[] appArguments) {
@@ -17,8 +20,15 @@ public class Main {
 
         Main.registerActions();
 
-        TcpServer server = new TcpServer(CliArguments.getInstance().getInt("port", 12345));
-        server.start();
+        ChatServer server = new ChatServer(CliArguments.getInstance().getInt("port", 12345));
+
+        Thread serverThread = new Thread(server, "chat-server");
+        serverThread.start();
+
+        Thread consoleThread = new Thread(new ServerTerminal(server), "server-terminal");
+        consoleThread.start();
+
+        server.stop();
     }
 
     private static void registerArgs() {

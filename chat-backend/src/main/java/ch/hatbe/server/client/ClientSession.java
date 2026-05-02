@@ -46,7 +46,6 @@ public class ClientSession implements Runnable {
             log.warn("Client connection lost.", e);
         } finally {
             this.disconnect();
-            this.clientService.disconnectClient(this);
         }
     }
 
@@ -71,7 +70,7 @@ public class ClientSession implements Runnable {
             if (this.getClient().getConnection() != null && !this.getClient().getConnection().isClosed()) {
                 this.getClient().getConnection().close();
             }
-            this.clientService.disconnectClient(this);
+            this.clientService.removeClient(this);
         } catch (IOException e) {
             log.warn("Could not close connection to client cleanly.", e);
         }

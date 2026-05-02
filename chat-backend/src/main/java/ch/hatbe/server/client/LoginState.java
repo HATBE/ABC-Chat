@@ -1,6 +1,6 @@
 package ch.hatbe.server.client;
 
-public enum ClientState {
+public enum LoginState {
     NEW,
     LOGGED_IN
 }

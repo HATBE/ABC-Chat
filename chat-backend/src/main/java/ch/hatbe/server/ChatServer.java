@@ -8,17 +8,22 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 @Slf4j
-public class TcpServer {
+public class ChatServer implements Runnable {
     private int port;
 
     @Getter
     private ServerSocket serverSocket;
 
-    private boolean isRunning = false;
+    private volatile boolean isRunning = false;
     private ClientService clientService;
 
-    public TcpServer(int port) {
+    public ChatServer(int port) {
         this.port = port;
+    }
+
+    @Override
+    public void run() {
+        this.start();
     }
 
     public void start() {
@@ -34,11 +39,10 @@ public class TcpServer {
 
             log.info("The server successfully started on port {}.", this.port);
 
-
             this.clientService.waitForClients();
         } catch(IOException e) {
-            this.isRunning = false;
             log.error("Could not start the chat server!", e);
+            this.stop();
         }
     }
 

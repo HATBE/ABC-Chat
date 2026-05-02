@@ -4,7 +4,7 @@ import ch.hatbe.protocol.actions.Action;
 import ch.hatbe.protocol.responses.ErrorResponse;
 import ch.hatbe.protocol.responses.LoginResponse;
 import ch.hatbe.server.client.ClientSession;
-import ch.hatbe.server.client.ClientState;
+import ch.hatbe.server.client.LoginState;
 import ch.hatbe.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,7 +18,7 @@ public class LoginAction extends Action {
 
     @Override
     public void handle(ClientSession session) {
-        if (session.getClient().getClientState() == ClientState.LOGGED_IN) {
+        if (session.getClient().getLoginState() == LoginState.LOGGED_IN) {
             session.send(new ErrorResponse("You are already logged in!").toJson());
             return;
         }
@@ -29,7 +29,7 @@ public class LoginAction extends Action {
 
         User user = new User(this.username);
         session.getClient().setUser(user);
-        session.getClient().setClientState(ClientState.LOGGED_IN);
+        session.getClient().setLoginState(LoginState.LOGGED_IN);
 
         session.send(new LoginResponse(user).toJson());
     }
