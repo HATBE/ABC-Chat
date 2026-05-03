@@ -1,5 +1,6 @@
 package ch.hatbe;
 
+import ch.hatbe.chat.ChatManager;
 import ch.hatbe.cli.CliArguments;
 import ch.hatbe.protocol.ActionRegistry;
 import ch.hatbe.protocol.ActionRouter;
@@ -8,12 +9,16 @@ import ch.hatbe.protocol.actions.auth.LoginAction;
 import ch.hatbe.protocol.actions.auth.LogoutAction;
 import ch.hatbe.protocol.actions.auth.WhoAmIAction;
 import ch.hatbe.server.ChatServer;
+import ch.hatbe.server.ServerContext;
 import ch.hatbe.server.ServerTerminal;
+import ch.hatbe.server.client.ClientManager;
 
 public class App {
     private final CliArguments cliArguments;
+
     private final ActionRegistry actionRegistry = new ActionRegistry();
     private final ActionRouter actionRouter;
+    private ServerContext context;
 
     public App(String [] args) {
         this.cliArguments = new CliArguments(args);
@@ -29,15 +34,27 @@ public class App {
 
         this.registerActions();
 
+        this.buildContext();
+
         var server = this.createServer();
 
         this.createTerminal(server);
     }
 
+    private void buildContext() {
+        ClientManager clientManager = new ClientManager();
+        ChatManager chatManager = new ChatManager();
+        this.context = new ServerContext(
+                clientManager,
+                chatManager
+        );
+    }
+
     private ChatServer createServer() {
         ChatServer server = new ChatServer(
                 this.cliArguments.getInt("port", 12345),
-                actionRouter
+                actionRouter,
+                context
         );
 
         Runtime.getRuntime().addShutdownHook(new Thread(server::stop)); // when server stops, call server.stop

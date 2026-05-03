@@ -16,16 +16,17 @@ public class ChatServer implements Runnable {
     private final int port;
 
     private final ActionRouter actionRouter;
-    private final ClientManager clientManager = new ClientManager();
+    private final ServerContext context;
     private final ExecutorService clientExecutor = Executors.newCachedThreadPool();
 
     private ServerSocket serverSocket;
 
     private volatile boolean isRunning = false;
 
-    public ChatServer(int port, ActionRouter actionRouter) {
+    public ChatServer(int port, ActionRouter actionRouter, ServerContext context) {
         this.port = port;
         this.actionRouter = actionRouter;
+        this.context = context;
     }
 
     @Override
@@ -50,10 +51,11 @@ public class ChatServer implements Runnable {
                 ClientSession session = new ClientSession(
                         clientSocket,
                         actionRouter,
-                        clientManager::remove
+                        this.context.getClientManager()::remove,
+                        this.context.getChatManager()
                 );
 
-                clientManager.add(session);
+                this.context.getClientManager().add(session);
                 clientExecutor.submit(session);
             }
         } catch(IOException e) {
@@ -70,7 +72,7 @@ public class ChatServer implements Runnable {
 
         this.isRunning = false;
 
-        this.clientManager.disconnectAll();
+        this.context.getClientManager().disconnectAll();
         this.clientExecutor.shutdownNow();
 
         if (this.serverSocket != null && !this.serverSocket.isClosed()) {

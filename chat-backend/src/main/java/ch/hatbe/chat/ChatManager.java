@@ -1,5 +1,5 @@
 package ch.hatbe.chat;
 
-public class ChatService {
+public class ChatManager {
 
 }

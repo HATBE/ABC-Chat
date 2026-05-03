@@ -1,5 +1,6 @@
 package ch.hatbe.server.client;
 
+import ch.hatbe.chat.ChatManager;
 import ch.hatbe.protocol.ActionRouter;
 import ch.hatbe.protocol.responses.WelcomeResponse;
 import ch.hatbe.server.client.entities.Client;
@@ -16,6 +17,9 @@ public class ClientSession implements Runnable {
     private final ActionRouter actionRouter;
     private final Consumer<ClientSession> onDisconnect;
 
+    @Getter
+    private final ChatManager chatManager;
+
     private BufferedReader reader;
     private PrintWriter writer;
 
@@ -24,10 +28,11 @@ public class ClientSession implements Runnable {
     @Getter
     private final Client client;
 
-    public ClientSession(Socket connection, ActionRouter actionRouter, Consumer<ClientSession> onDisconnect) {
+    public ClientSession(Socket connection, ActionRouter actionRouter, Consumer<ClientSession> onDisconnect, ChatManager chatManager) {
         this.client = new Client(connection);
         this.actionRouter = actionRouter;
         this.onDisconnect = onDisconnect;
+        this.chatManager = chatManager;
     }
 
     @Override
