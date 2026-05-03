@@ -1,6 +1,6 @@
 package ch.hatbe.server.client;
 
-import ch.hatbe.protocol.ActionService;
+import ch.hatbe.protocol.ActionRouter;
 import ch.hatbe.protocol.responses.WelcomeResponse;
 import ch.hatbe.server.client.entities.Client;
 import lombok.Getter;
@@ -9,11 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.function.Consumer;
 
 @Slf4j
 public class ClientSession implements Runnable {
-    private final ClientService clientService;
-    private final ActionService actionService;
+    private final ActionRouter actionRouter;
+    private final Consumer<ClientSession> onDisconnect;
 
     private BufferedReader reader;
     private PrintWriter writer;
@@ -23,10 +24,10 @@ public class ClientSession implements Runnable {
     @Getter
     private final Client client;
 
-    public ClientSession(Socket connection, ClientService clientService) {
+    public ClientSession(Socket connection, ActionRouter actionRouter, Consumer<ClientSession> onDisconnect) {
         this.client = new Client(connection);
-        this.clientService = clientService;
-        this.actionService = new ActionService(this);
+        this.actionRouter = actionRouter;
+        this.onDisconnect = onDisconnect;
     }
 
     @Override
@@ -43,7 +44,7 @@ public class ClientSession implements Runnable {
                 if(message.isBlank()) {
                     continue;
                 }
-                this.actionService.route(message);
+                this.actionRouter.route(message, this);
             }
         } catch (IOException e) {
             log.warn("Client connection lost.", e);
@@ -70,12 +71,13 @@ public class ClientSession implements Runnable {
                 this.writer.close();
             }
 
-            if (this.getClient().getConnection() != null && !this.getClient().getConnection().isClosed()) {
+            if (!this.getClient().getConnection().isClosed()) {
                 this.getClient().getConnection().close();
             }
-            this.clientService.removeClient(this);
         } catch (IOException e) {
             log.warn("Could not close connection to client cleanly.", e);
+        } finally {
+            this.onDisconnect.accept(this);
         }
     }
 }

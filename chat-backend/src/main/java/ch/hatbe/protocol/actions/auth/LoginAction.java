@@ -4,7 +4,6 @@ import ch.hatbe.protocol.actions.Action;
 import ch.hatbe.protocol.responses.ErrorResponse;
 import ch.hatbe.protocol.responses.LoginResponse;
 import ch.hatbe.server.client.ClientSession;
-import ch.hatbe.server.client.LoginState;
 import ch.hatbe.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,8 +17,8 @@ public class LoginAction extends Action {
 
     @Override
     public void handle(ClientSession session) {
-        if (session.getClient().getLoginState() == LoginState.LOGGED_IN) {
-            session.send(new ErrorResponse("You are already logged in!").toJson());
+        if (session.getClient().getUser() != null) {
+            this.error(session, "You are already logged in!");
             return;
         }
 
@@ -27,10 +26,25 @@ public class LoginAction extends Action {
 
         // TODO: check if username is already used // maybe later make login system or so with pw
 
-        User user = new User(this.username);
+        try {
+            this.validateUsername(username);
+        } catch(Exception e) {
+            this.error(session, e.getMessage());
+        }
+
+        User user = new User(this.username.strip());
         session.getClient().setUser(user);
-        session.getClient().setLoginState(LoginState.LOGGED_IN);
 
         session.send(new LoginResponse(user).toJson());
+    }
+
+    private void validateUsername(String username) throws Exception {
+        if (username == null || username.isBlank()) {
+            throw new Exception("Username is required");
+        }
+
+        if (username.length() < 3 || username.length() > 16) {
+            throw new Exception("The length of the Username must be between 3 and 16 characters");
+        }
     }
 }

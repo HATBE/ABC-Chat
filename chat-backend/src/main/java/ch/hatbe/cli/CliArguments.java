@@ -10,21 +10,16 @@ import java.util.Map;
 
 @Slf4j
 public class CliArguments {
-    private static CliArguments INSTANCE;
+    private final String[] args;
 
     private final Options options = new Options();
     private final Map<String, String> arguments = new HashMap<>();
 
-    private CliArguments() {}
-
-    public static CliArguments getInstance() {
-        if (CliArguments.INSTANCE == null) {
-            CliArguments.INSTANCE = new CliArguments();
-        }
-        return CliArguments.INSTANCE;
+    public CliArguments(String[] args) {
+        this.args = args;
     }
 
-    public void registerOption(String shortName, String longName, String description, boolean required) {
+    public CliArguments registerOption(String shortName, String longName, String description, boolean required) {
         Option option = Option.builder(shortName)
                 .longOpt(longName)
                 .desc(description)
@@ -33,13 +28,14 @@ public class CliArguments {
                 .get();
 
         this.options.addOption(option);
+        return this;
     }
 
-    public boolean parse(String[] args) {
+    public boolean parse() {
         CommandLineParser parser = new DefaultParser();
 
         try {
-            CommandLine cmd = parser.parse(this.options, args);
+            CommandLine cmd = parser.parse(this.options, this.args);
 
             arguments.clear();
 

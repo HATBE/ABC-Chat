@@ -1,6 +1,5 @@
 package ch.hatbe.server.client.entities;
 
-import ch.hatbe.server.client.LoginState;
 import ch.hatbe.user.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,14 +12,9 @@ public class Client {
 
     @Getter
     @Setter
-    private LoginState loginState;
-
-    @Getter
-    @Setter
     private User user = null;
 
     public Client(Socket connection) {
-        this.loginState = LoginState.NEW;
         this.connection = connection;
     }
 }

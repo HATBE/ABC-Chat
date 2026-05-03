@@ -1,22 +1,20 @@
 package ch.hatbe.protocol.actions.auth;
 
 import ch.hatbe.protocol.actions.Action;
-import ch.hatbe.protocol.responses.WhoAmIResponse;
+import ch.hatbe.protocol.responses.AckResponse;
 import ch.hatbe.server.client.ClientSession;
-import ch.hatbe.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WhoAmIAction extends Action {
+public class LogoutAction extends Action {
     @Override
     public void handle(ClientSession session) {
-        User user = session.getClient().getUser();
-
-        if (user == null) {
-           this.error(session, "You are not Logged In!");
+        if (session.getClient().getUser() == null) {
+            this.error(session, "You are not logged in!");
             return;
         }
 
-        session.send(new WhoAmIResponse(user).toJson());
+        session.getClient().setUser(null);
+        session.send(new AckResponse().toJson());
     }
 }

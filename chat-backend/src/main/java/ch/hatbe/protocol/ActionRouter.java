@@ -6,21 +6,18 @@ import ch.hatbe.server.client.ClientSession;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
-public class ActionService {
-    private final ObjectMapper mapper;
-    private final ClientSession session;
+public class ActionRouter {
+    private final ObjectMapper mapper = new ObjectMapper();
+    private final ActionRegistry registry;
 
-    public ActionService(ClientSession session) {
-        this.mapper = new ObjectMapper();
-        this.session = session;
+    public ActionRouter(ActionRegistry registry) {
+        this.registry = registry;
     }
 
-    public void route(String json) {
+    public void route(String json, ClientSession session) {
         try {
-            JsonNode node = mapper.readTree(json);
+            JsonNode node = this.mapper.readTree(json);
 
             JsonNode typeNode = node.get("type");
             if (typeNode == null || !typeNode.isTextual()) {
@@ -30,18 +27,16 @@ public class ActionService {
 
             String type = typeNode.asText();
 
-            var actionClass = ActionRegistry.getInstance().getAction(type);
-
+            Class<? extends Action> actionClass = this.registry.getAction(type);
             if (actionClass == null) {
-                session.send(new ErrorResponse("Action does not exist!").toJson());
+                session.send(new ErrorResponse(String.format("Unknown action: %s", type)).toJson());
                 return;
             }
 
             Action action = mapper.treeToValue(node, actionClass);
-
-            action.handle(this.session);
+            action.handle(session);
         } catch (JsonProcessingException e) {
-            session.send(new ErrorResponse("Action does not exist!").toJson());
+            session.send(new ErrorResponse("Invalid JSON").toJson());
         }
     }
 }

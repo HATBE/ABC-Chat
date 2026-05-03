@@ -1,24 +1,31 @@
 package ch.hatbe.server;
 
-import ch.hatbe.server.client.ClientService;
-import lombok.Getter;
+import ch.hatbe.protocol.ActionRouter;
+import ch.hatbe.server.client.ClientManager;
+import ch.hatbe.server.client.ClientSession;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Slf4j
 public class ChatServer implements Runnable {
-    private int port;
+    private final int port;
 
-    @Getter
+    private final ActionRouter actionRouter;
+    private final ClientManager clientManager = new ClientManager();
+    private final ExecutorService clientExecutor = Executors.newCachedThreadPool();
+
     private ServerSocket serverSocket;
 
     private volatile boolean isRunning = false;
-    private ClientService clientService;
 
-    public ChatServer(int port) {
+    public ChatServer(int port, ActionRouter actionRouter) {
         this.port = port;
+        this.actionRouter = actionRouter;
     }
 
     @Override
@@ -31,37 +38,48 @@ public class ChatServer implements Runnable {
             return;
         }
 
-        try {
-            this.serverSocket = new ServerSocket(this.port);
+        try (ServerSocket socket = new ServerSocket(port)) {
+            this.serverSocket = socket;
             this.isRunning = true;
-
-            this.clientService = new ClientService(this);
 
             log.info("The server successfully started on port {}.", this.port);
 
-            this.clientService.waitForClients();
+            while (this.isRunning()) {
+                Socket clientSocket = socket.accept();
+
+                ClientSession session = new ClientSession(
+                        clientSocket,
+                        actionRouter,
+                        clientManager::remove
+                );
+
+                clientManager.add(session);
+                clientExecutor.submit(session);
+            }
         } catch(IOException e) {
             log.error("Could not start the chat server!", e);
+        } finally {
             this.stop();
         }
     }
 
     public void stop() {
-        this.isRunning = false;
-
-        if (this.clientService != null) {
-            this.clientService.disconnectAllClients();
-        }
-
-        if (this.serverSocket == null || this.serverSocket.isClosed()) {
+        if (!this.isRunning) {
             return;
         }
 
-        try {
-            this.serverSocket.close();
-            log.info("The server successfully stopped.");
-        } catch(IOException e) {
-            log.error("Could not stop server!", e);
+        this.isRunning = false;
+
+        this.clientManager.disconnectAll();
+        this.clientExecutor.shutdownNow();
+
+        if (this.serverSocket != null && !this.serverSocket.isClosed()) {
+            try {
+                this.serverSocket.close();
+                log.info("The server successfully stopped.");
+            } catch(IOException e) {
+                log.error("Could not stop server!", e);
+            }
         }
     }
 
