@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f53049e-7532-4d44-842c-044397c81722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ServerContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/chat/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/chat/ChatManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ChatServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +116,7 @@
       <workItem from="1777470643648" duration="14713000" />
       <workItem from="1777621949065" duration="314000" />
       <workItem from="1777727330921" duration="1746000" />
-      <workItem from="1777731675772" duration="22149000" />
+      <workItem from="1777731675772" duration="23161000" />
     </task>
     <servers />
   </component>
