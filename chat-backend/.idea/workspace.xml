@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f53049e-7532-4d44-842c-044397c81722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/chat/ChatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ServerTerminal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/Actions" beforeDir="false" afterPath="$PROJECT_DIR$/Actions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/LoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/LoginAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/WhoAmIAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/WhoAmIAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/TcpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ChatServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/LoginState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/entities/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="34" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -126,7 +118,7 @@
       <workItem from="1777470643648" duration="14713000" />
       <workItem from="1777621949065" duration="314000" />
       <workItem from="1777727330921" duration="1746000" />
-      <workItem from="1777731675772" duration="11810000" />
+      <workItem from="1777731675772" duration="16065000" />
     </task>
     <servers />
   </component>

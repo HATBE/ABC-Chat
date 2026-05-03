@@ -40,6 +40,9 @@ public class ClientSession implements Runnable {
             String message;
 
             while (this.isRunning && (message = this.reader.readLine()) != null) {
+                if(message.isBlank()) {
+                    continue;
+                }
                 this.actionService.route(message);
             }
         } catch (IOException e) {
