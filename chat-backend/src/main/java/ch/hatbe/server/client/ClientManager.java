@@ -1,6 +1,7 @@
 package ch.hatbe.server.client;
 
 import ch.hatbe.protocol.responses.Response;
+import ch.hatbe.server.client.entities.Client;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -29,6 +30,20 @@ public class ClientManager {
         for (ClientSession session : this.sessions) {
             session.send(json);
         }
+    }
+
+    public List<Client> getClients() {
+        return this.sessions.stream().map(ClientSession::getClient).toList();
+    }
+
+    public boolean isUsernameInUse(String username) {
+        for (ClientSession session : this.sessions) {
+            if (session.getClient().getUser() != null && username.equals(session.getClient().getUser().getUsername())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public int count() {

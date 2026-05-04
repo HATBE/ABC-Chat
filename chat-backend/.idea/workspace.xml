@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f53049e-7532-4d44-842c-044397c81722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/TestAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Actions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Actions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/LoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/LoginAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ServerContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ServerContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ServerTerminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ServerTerminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/user/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,11 +125,22 @@
       <workItem from="1777621949065" duration="314000" />
       <workItem from="1777727330921" duration="1746000" />
       <workItem from="1777731675772" duration="23161000" />
-      <workItem from="1777808262128" duration="3200000" />
+      <workItem from="1777808262128" duration="6084000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

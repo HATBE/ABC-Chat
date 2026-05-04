@@ -3,6 +3,7 @@ package ch.hatbe.server;
 import ch.hatbe.protocol.ActionRouter;
 import ch.hatbe.server.client.ClientManager;
 import ch.hatbe.server.client.ClientSession;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class ChatServer implements Runnable {
     private final int port;
 
     private final ActionRouter actionRouter;
+    @Getter
     private final ServerContext context;
     private final ExecutorService clientExecutor = Executors.newCachedThreadPool();
 
@@ -52,7 +54,7 @@ public class ChatServer implements Runnable {
                         clientSocket,
                         actionRouter,
                         this.context.getClientManager()::remove,
-                        this.context.getChatManager()
+                        this.context
                 );
 
                 this.context.getClientManager().add(session);

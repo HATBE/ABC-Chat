@@ -3,6 +3,7 @@ package ch.hatbe.server.client;
 import ch.hatbe.chat.ChatManager;
 import ch.hatbe.protocol.ActionRouter;
 import ch.hatbe.protocol.responses.WelcomeResponse;
+import ch.hatbe.server.ServerContext;
 import ch.hatbe.server.client.entities.Client;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,7 @@ public class ClientSession implements Runnable {
     private final Consumer<ClientSession> onDisconnect;
 
     @Getter
-    private final ChatManager chatManager;
+    private final ServerContext context;
 
     private BufferedReader reader;
     private PrintWriter writer;
@@ -28,11 +29,11 @@ public class ClientSession implements Runnable {
     @Getter
     private final Client client;
 
-    public ClientSession(Socket connection, ActionRouter actionRouter, Consumer<ClientSession> onDisconnect, ChatManager chatManager) {
+    public ClientSession(Socket connection, ActionRouter actionRouter, Consumer<ClientSession> onDisconnect, ServerContext context) {
         this.client = new Client(connection);
         this.actionRouter = actionRouter;
         this.onDisconnect = onDisconnect;
-        this.chatManager = chatManager;
+        this.context = context;
     }
 
     @Override

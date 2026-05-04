@@ -13,6 +13,7 @@ import ch.hatbe.server.ChatServer;
 import ch.hatbe.server.ServerContext;
 import ch.hatbe.server.ServerTerminal;
 import ch.hatbe.server.client.ClientManager;
+import ch.hatbe.user.UserService;
 
 public class App {
     private final CliArguments cliArguments;
@@ -43,11 +44,10 @@ public class App {
     }
 
     private void buildContext() {
-        ClientManager clientManager = new ClientManager();
-        ChatManager chatManager = new ChatManager();
         this.context = new ServerContext(
-                clientManager,
-                chatManager
+                new ClientManager(),
+                new ChatManager(),
+                new UserService()
         );
     }
 
