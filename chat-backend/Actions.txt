@@ -2,3 +2,4 @@
 {"type":"WHOAMI"}
 {"type":"DISCONNECT"}
 {"type":"LOGOUT"}
+{"type":"TEST"}

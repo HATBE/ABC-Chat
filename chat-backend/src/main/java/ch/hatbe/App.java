@@ -5,6 +5,7 @@ import ch.hatbe.cli.CliArguments;
 import ch.hatbe.protocol.ActionRegistry;
 import ch.hatbe.protocol.ActionRouter;
 import ch.hatbe.protocol.actions.DisconnectAction;
+import ch.hatbe.protocol.actions.TestAction;
 import ch.hatbe.protocol.actions.auth.LoginAction;
 import ch.hatbe.protocol.actions.auth.LogoutAction;
 import ch.hatbe.protocol.actions.auth.WhoAmIAction;
@@ -80,6 +81,7 @@ public class App {
                 .registerAction("DISCONNECT", DisconnectAction.class)
                 .registerAction("LOGIN", LoginAction.class)
                 .registerAction("WHOAMI", WhoAmIAction.class)
-                .registerAction("LOGOUT", LogoutAction.class);
+                .registerAction("LOGOUT", LogoutAction.class)
+                .registerAction("TEST", TestAction.class);
     }
 }
