@@ -25,10 +25,8 @@ public class ClientManager {
     }
 
     public void broadcast(Response response) {
-        String json = response.toJson();
-
         for (ClientSession session : this.sessions) {
-            session.send(json);
+            session.send(response);
         }
     }
 

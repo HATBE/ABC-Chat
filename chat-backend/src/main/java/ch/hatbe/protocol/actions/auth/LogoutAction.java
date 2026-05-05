@@ -15,6 +15,6 @@ public class LogoutAction extends Action {
         }
 
         session.getClient().setUser(null);
-        session.send(new AckResponse().toJson());
+        session.send(new AckResponse());
     }
 }

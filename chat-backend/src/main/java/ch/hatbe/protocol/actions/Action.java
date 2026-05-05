@@ -9,6 +9,6 @@ public abstract class Action {
     public abstract void handle(ClientSession session);
 
     protected void error(ClientSession session, String message) {
-        session.send(new ErrorResponse(message).toJson());
+        session.send(new ErrorResponse(message));
     }
 }

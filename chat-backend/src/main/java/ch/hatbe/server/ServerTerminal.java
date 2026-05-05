@@ -1,6 +1,5 @@
 package ch.hatbe.server;
 
-import ch.hatbe.server.client.ClientSession;
 import ch.hatbe.server.client.entities.Client;
 
 import java.util.List;
@@ -22,12 +21,11 @@ public class ServerTerminal implements Runnable {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
 
-            if (input.equals("status")) {
-                this.printStatus();
-            } else if (input.equals("listclients")) {
-                this.listClients();
-            } else {
-                System.out.println("Unknown command: " + input);
+            switch (input) {
+                case "status" -> this.printStatus();
+                case "listclients" -> this.listClients();
+                case "disconnectall" -> this.disconnectAllClients();
+                default -> System.out.println("Unknown command: " + input);
             }
         }
     }
@@ -45,6 +43,11 @@ public class ServerTerminal implements Runnable {
             System.out.println(String.format("%s - %s", client.getConnection().getInetAddress(), client.getUser() != null ? client.getUser().getUsername() : "Not logged in"));
         }
 
+    }
+
+    private void disconnectAllClients() {
+        this.server.getContext().getClientManager().disconnectAll();
+        System.out.println("Disconnected all Clients");
     }
 
     private void printStatus() {

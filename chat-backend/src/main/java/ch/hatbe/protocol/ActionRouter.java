@@ -21,7 +21,7 @@ public class ActionRouter {
 
             JsonNode typeNode = node.get("type");
             if (typeNode == null || !typeNode.isTextual()) {
-                session.send(new ErrorResponse("Missing or invalid action type").toJson());
+                session.send(new ErrorResponse("Missing or invalid action type"));
                 return;
             }
 
@@ -29,14 +29,14 @@ public class ActionRouter {
 
             Class<? extends Action> actionClass = this.registry.getAction(type);
             if (actionClass == null) {
-                session.send(new ErrorResponse(String.format("Unknown action: %s", type)).toJson());
+                session.send(new ErrorResponse(String.format("Unknown action: %s", type)));
                 return;
             }
 
             Action action = mapper.treeToValue(node, actionClass);
             action.handle(session);
         } catch (JsonProcessingException e) {
-            session.send(new ErrorResponse("Invalid JSON").toJson());
+            session.send(new ErrorResponse("Invalid JSON"));
         }
     }
 }

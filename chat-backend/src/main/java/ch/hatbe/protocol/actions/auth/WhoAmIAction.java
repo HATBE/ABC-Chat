@@ -17,6 +17,6 @@ public class WhoAmIAction extends Action {
             return;
         }
 
-        session.send(new WhoAmIResponse(user).toJson());
+        session.send(new WhoAmIResponse(user));
     }
 }

@@ -9,6 +9,7 @@ import ch.hatbe.protocol.actions.TestAction;
 import ch.hatbe.protocol.actions.auth.LoginAction;
 import ch.hatbe.protocol.actions.auth.LogoutAction;
 import ch.hatbe.protocol.actions.auth.WhoAmIAction;
+import ch.hatbe.protocol.actions.chat.CreateChatAction;
 import ch.hatbe.server.ChatServer;
 import ch.hatbe.server.ServerContext;
 import ch.hatbe.server.ServerTerminal;
@@ -82,6 +83,7 @@ public class App {
                 .registerAction("LOGIN", LoginAction.class)
                 .registerAction("WHOAMI", WhoAmIAction.class)
                 .registerAction("LOGOUT", LogoutAction.class)
-                .registerAction("TEST", TestAction.class);
+                .registerAction("TEST", TestAction.class)
+                .registerAction("CREATE_CHAT", CreateChatAction.class);
     }
 }

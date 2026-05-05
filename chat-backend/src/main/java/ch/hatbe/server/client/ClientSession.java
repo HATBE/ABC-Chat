@@ -2,6 +2,7 @@ package ch.hatbe.server.client;
 
 import ch.hatbe.chat.ChatManager;
 import ch.hatbe.protocol.ActionRouter;
+import ch.hatbe.protocol.responses.Response;
 import ch.hatbe.protocol.responses.WelcomeResponse;
 import ch.hatbe.server.ServerContext;
 import ch.hatbe.server.client.entities.Client;
@@ -42,7 +43,7 @@ public class ClientSession implements Runnable {
             this.reader = new BufferedReader(new InputStreamReader(this.getClient().getConnection().getInputStream(), StandardCharsets.UTF_8));
             this.writer = new PrintWriter(new OutputStreamWriter(this.getClient().getConnection().getOutputStream(), StandardCharsets.UTF_8), true);
 
-            this.send(new WelcomeResponse().toJson());
+            this.send(new WelcomeResponse());
 
             String message;
 
@@ -59,9 +60,9 @@ public class ClientSession implements Runnable {
         }
     }
 
-    public void send(String message) {
+    public void send(Response response) {
         if (this.writer != null) {
-            this.writer.println(message);
+            this.writer.println(response.toJson());
         }
     }
 

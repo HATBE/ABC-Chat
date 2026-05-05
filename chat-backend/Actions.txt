@@ -3,3 +3,4 @@
 {"type":"DISCONNECT"}
 {"type":"LOGOUT"}
 {"type":"TEST"}
+{"type":"CREATE_CHAT", "name":"testchat"}

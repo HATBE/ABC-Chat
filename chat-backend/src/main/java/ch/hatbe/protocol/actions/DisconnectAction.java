@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class DisconnectAction extends Action {
     @Override
     public void handle(ClientSession session) {
-        session.send(new AckResponse().toJson());
+        session.send(new AckResponse());
         session.disconnect();
     }
 }

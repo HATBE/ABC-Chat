@@ -13,7 +13,7 @@ public class TestAction extends Action{
 
             while (count >= 0) {
                 if (count <= 5 || count % 10 == 0) {
-                    session.send(new ErrorResponse(String.valueOf(count)).toJson());
+                    session.send(new ErrorResponse(String.valueOf(count)));
                 }
 
                 count--;
