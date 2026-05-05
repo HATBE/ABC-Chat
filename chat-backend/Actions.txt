@@ -1,6 +1,9 @@
-{"type":"LOGIN","username":"aaron"}
+{"type":"LOGIN","username":"hans"}
 {"type":"WHOAMI"}
 {"type":"DISCONNECT"}
 {"type":"LOGOUT"}
 {"type":"TEST"}
 {"type":"CREATE_CHAT", "name":"testchat"}
+{"type":"JOIN_CHAT", "name":"testchat"}
+{"type":"LEAVE_CHAT"}
+{"type":"SEND_MESSAGE", "message":"test message"}

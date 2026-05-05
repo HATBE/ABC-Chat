@@ -1,5 +1,6 @@
 package ch.hatbe.chat;
 
+import ch.hatbe.protocol.responses.*;
 import ch.hatbe.user.User;
 import lombok.Getter;
 
@@ -25,6 +26,7 @@ public class Chat {
             return;
         }
         this.users.add(user);
+        this.sendJoinMessage(user);
     }
 
     public void removeUser(User user) {
@@ -32,5 +34,34 @@ public class Chat {
             return;
         }
         this.removeUser(user);
+        this.sendLeaveMessage(user);
+    }
+
+    private void sendJoinMessage(User sender) {
+        for (User user : this.users) {
+            if (user.getUsername().equals(sender.getUsername())) {
+                continue;
+            }
+            user.getSession().send(new JoinResponse(user));
+        }
+    }
+
+    private void sendLeaveMessage(User sender) {
+        for (User user : this.users) {
+            if (user.getUsername().equals(sender.getUsername())) {
+                continue;
+            }
+            user.getSession().send(new LeaveResponse(user));
+        }
+    }
+
+    public void sendMessage(String message, User sender) {
+        for (User user : this.users) {
+            if (user.getUsername().equals(sender.getUsername())) {
+               continue;
+            }
+
+            user.getSession().send(new ChatMessageResponse(sender, message));
+        }
     }
 }

@@ -1,11 +1,12 @@
 package ch.hatbe.user;
 
 import ch.hatbe.server.ServerContext;
+import ch.hatbe.server.client.ClientSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class UserService {
-    public User login(String username, ServerContext context) throws Exception {
+    public User login(String username, ServerContext context, ClientSession session) throws Exception {
         this.validateUsername(username);
 
         username = username.strip();
@@ -14,7 +15,7 @@ public class UserService {
             throw new Exception("Username is currently in use");
         }
 
-        return new User(username);
+        return new User(username, session);
     }
 
     private void validateUsername(String username) throws Exception {

@@ -21,7 +21,7 @@ public class ClientManager {
         for (ClientSession session : this.sessions) {
             session.disconnect();
         }
-        sessions.clear();
+        this.sessions.clear();
     }
 
     public void broadcast(Response response) {

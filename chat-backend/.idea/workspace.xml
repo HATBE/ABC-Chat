@@ -5,23 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f53049e-7532-4d44-842c-044397c81722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/chat/Chat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/chat/CreateChatAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/CreateChatResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/chat/JoinChatAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/chat/LeaveChatAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/chat/SendMessageAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/ChatMessageResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/JoinResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/responses/LeaveResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Actions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Actions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/chat/Chat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/chat/ChatManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/chat/ChatManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/ActionRouter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/DisconnectAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/DisconnectAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/TestAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/TestAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/LoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/LoginAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/LogoutAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/LogoutAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/WhoAmIAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/WhoAmIAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ServerTerminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/ServerTerminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/chat/CreateChatAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/chat/CreateChatAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/server/client/ClientSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/hatbe/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/hatbe/user/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,8 +96,9 @@
       <recent name="ch.hatbe.packages" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ch.hatbe.protocol.actions" />
+      <recent name="ch.hatbe.protocol.actions.chat" />
       <recent name="ch.hatbe.protocol.responses" />
+      <recent name="ch.hatbe.protocol.actions" />
     </key>
   </component>
   <component name="RunManager">
@@ -134,7 +134,7 @@
       <workItem from="1777727330921" duration="1746000" />
       <workItem from="1777731675772" duration="23161000" />
       <workItem from="1777808262128" duration="6297000" />
-      <workItem from="1778011728917" duration="1752000" />
+      <workItem from="1778011728917" duration="4587000" />
     </task>
     <servers />
   </component>
@@ -151,16 +151,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ch/hatbe/protocol/actions/auth/WhoAmIAction.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

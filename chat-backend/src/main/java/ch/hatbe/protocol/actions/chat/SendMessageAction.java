@@ -2,17 +2,16 @@ package ch.hatbe.protocol.actions.chat;
 
 import ch.hatbe.chat.Chat;
 import ch.hatbe.protocol.actions.Action;
-import ch.hatbe.protocol.responses.CreateChatResponse;
 import ch.hatbe.server.client.ClientSession;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateChatAction extends Action  {
+public class SendMessageAction extends Action {
     @JsonProperty(required = true)
     @Getter
-    private String name;
+    private String message;
 
     @Override
     public void handle(ClientSession session) {
@@ -22,8 +21,14 @@ public class CreateChatAction extends Action  {
         }
 
         try {
-            Chat chat = session.getContext().getChatManager().create(session.getClient().getUser(), this.name);
-            session.send(new CreateChatResponse(chat));
+            Chat chat = session.getContext().getChatManager().getCurrentChat(session.getClient().getUser());
+
+            if(chat == null) {
+                this.error(session, "You are not in a chat");
+                return;
+            }
+
+            chat.sendMessage(this.message, session.getClient().getUser());
         } catch(Exception e) {
             this.error(session, e.getMessage());
         }

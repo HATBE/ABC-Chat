@@ -24,7 +24,7 @@ public class LoginAction extends Action {
         }
 
         try {
-            User user = session.getContext().getUserService().login(username, session.getContext());
+            User user = session.getContext().getUserService().login(username, session.getContext(), session);
             session.getClient().setUser(user);
             session.send(new LoginResponse(user));
         } catch(Exception e) {

@@ -16,12 +16,12 @@ public class ChatManager {
         }
 
         Chat chat = new Chat(name, creater);
-
         this.chats.add(chat);
+
         return chat;
     }
 
-    public void join(String name, User user) throws Exception {
+    public Chat join(String name, User user) throws Exception {
        Chat chat = this.chats.stream().filter( c -> c.getName().equals(name)).findFirst().orElse(null);
 
        if (chat == null) {
@@ -31,6 +31,8 @@ public class ChatManager {
         this.leaveAllChats(user);
 
        chat.addUser(user);
+
+       return chat;
     }
 
     public void leaveAllChats(User user) {
@@ -41,8 +43,8 @@ public class ChatManager {
         }
     }
 
-    public void leave(String name, User user) throws Exception {
-        Chat chat = this.chats.stream().filter( c -> c.getName().equals(name)).findFirst().orElse(null);
+    public void leave(User user) throws Exception {
+        Chat chat = this.getCurrentChat(user);
 
         if (chat == null) {
             throw new Exception("Chat does not exist");
@@ -53,5 +55,9 @@ public class ChatManager {
 
     public List<Chat> getChatsOfUser(User user) {
         return this.chats.stream().filter(c -> c.getUsers().contains(user)).toList();
+    }
+
+    public Chat getCurrentChat(User user) {
+        return this.chats.stream().filter(c -> c.getUsers().contains(user)).findFirst().orElse(null);
     }
 }

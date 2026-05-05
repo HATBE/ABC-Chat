@@ -10,6 +10,9 @@ import ch.hatbe.protocol.actions.auth.LoginAction;
 import ch.hatbe.protocol.actions.auth.LogoutAction;
 import ch.hatbe.protocol.actions.auth.WhoAmIAction;
 import ch.hatbe.protocol.actions.chat.CreateChatAction;
+import ch.hatbe.protocol.actions.chat.JoinChatAction;
+import ch.hatbe.protocol.actions.chat.LeaveChatAction;
+import ch.hatbe.protocol.actions.chat.SendMessageAction;
 import ch.hatbe.server.ChatServer;
 import ch.hatbe.server.ServerContext;
 import ch.hatbe.server.ServerTerminal;
@@ -84,6 +87,9 @@ public class App {
                 .registerAction("WHOAMI", WhoAmIAction.class)
                 .registerAction("LOGOUT", LogoutAction.class)
                 .registerAction("TEST", TestAction.class)
-                .registerAction("CREATE_CHAT", CreateChatAction.class);
+                .registerAction("CREATE_CHAT", CreateChatAction.class)
+                .registerAction("SEND_MESSAGE", SendMessageAction.class)
+                .registerAction("JOIN_CHAT", JoinChatAction.class)
+                .registerAction("LEAVE_CHAT", LeaveChatAction.class);
     }
 }

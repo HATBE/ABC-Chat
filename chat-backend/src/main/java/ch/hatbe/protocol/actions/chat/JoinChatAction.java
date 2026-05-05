@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateChatAction extends Action  {
+public class JoinChatAction extends Action {
     @JsonProperty(required = true)
     @Getter
     private String name;
@@ -22,7 +22,7 @@ public class CreateChatAction extends Action  {
         }
 
         try {
-            Chat chat = session.getContext().getChatManager().create(session.getClient().getUser(), this.name);
+            Chat chat = session.getContext().getChatManager().join(this.name, session.getClient().getUser());
             session.send(new CreateChatResponse(chat));
         } catch(Exception e) {
             this.error(session, e.getMessage());
